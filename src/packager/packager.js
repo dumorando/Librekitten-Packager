@@ -1627,7 +1627,7 @@ Packager.DEFAULT_OPTIONS = () => ({
   maxClones: 300,
   fencing: true,
   miscLimits: true,
-  stageWidth: 480,
+  stageWidth: 640,
   stageHeight: 360,
   resizeMode: 'preserve-ratio',
   autoplay: false,
