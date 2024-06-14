@@ -15,6 +15,7 @@
     border: 1px solid currentColor;
     margin-bottom: 4px;
     background: black;
+    border-radius:5px;
   }
   :global([theme="dark"]) .bar-outer {
     background: transparent;
@@ -22,7 +23,16 @@
   .bar-inner {
     height: 100%;
     width: 0;
-    background: white;
+    background-image: linear-gradient(
+      45deg,
+      #353535 25%,
+      transparent 25%,
+      transparent 50%,
+      #353535 50%,
+      #353535 75%,
+      transparent 75%,
+      transparent
+    );
   }
   .text {
     font-style: italic;

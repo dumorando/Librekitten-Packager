@@ -1,11 +1,21 @@
 <script>
   import ResetButton from './ResetButton.svelte';
-
+  import { tweened } from 'svelte/motion';
+	import { cubicOut } from 'svelte/easing';
+  import { onMount } from 'svelte';
   export let caption = false;
   export let center = false;
   export let modal = false;
-  export let accent = '';
   export let reset;
+
+  const size = tweened(0, {
+		duration: 300,
+		easing: cubicOut
+	});
+
+  onMount(() => {
+    $size++;
+  });
 </script>
 
 <style>
@@ -47,7 +57,7 @@
   class:caption
   class:modal
   class:center={caption || center}
-  style:border-top={accent ? `6px solid ${accent}` : ''}
+  style="transform: scale({$size})"
 >
   {#if reset}
     <div class="reset">

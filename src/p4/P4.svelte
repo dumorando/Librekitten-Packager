@@ -1,7 +1,6 @@
 <script>
   import {_} from '../locales/';
   import {fade} from 'svelte/transition';
-  import ComplexMessage from './ComplexMessage.svelte';
   import Section from './Section.svelte';
   import SelectProject from './SelectProject.svelte';
   import SelectLocale from './SelectLocale.svelte';
@@ -52,7 +51,7 @@
 
 <style>
   :root {
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     background: white;
     color: black;
   }
@@ -116,63 +115,21 @@
   footer > div {
     margin-top: 12px;
   }
-  .disclaimer {
-    font-style: italic;
-  }
-  .version {
-    font-size: small;
-    opacity: 0.8;
-  }
-  .version a {
-    color: inherit;
+
+  .center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 </style>
 
 <Modals bind:modalVisible={modalVisible} />
 
 <main aria-hidden={modalVisible} class:is-not-safari={!isSafari}>
-  <Section accent={ACCENT_COLOR}>
-    <div>
+  <Section>
+    <div class="center">
+      <img src="/librekitten.ico" alt="librekitty" />
       <h1>{APP_NAME}</h1>
-      {#if version}
-        <p class="version">
-          {version}
-          {#if isStandalone}
-            - <a href={WEBSITE}>{WEBSITE}</a>
-          {/if}
-        </p>
-      {/if}
-      <p>{$_('p4.description1')}</p>
-      <p>
-        <ComplexMessage
-          message={$_('p4.description2')}
-          values={{
-            embedding: {
-              text: $_('p4.description2-embedding'),
-              href: 'https://docs.turbowarp.org/embedding'
-            }
-          }}
-        />
-      </p>
-      <p>
-        <ComplexMessage
-          message={$_('p4.description3')}
-          values={{
-            // These placeholders are named this way for legacy reasons.
-            onScratch: {
-              text: $_('p4.description3-on').replace('{brand}', FEEDBACK_PRIMARY.name),
-              href: FEEDBACK_PRIMARY.link
-            },
-            onGitHub: {
-              text: $_('p4.description3-on').replace('{brand}', FEEDBACK_SECONDARY.name),
-              href: FEEDBACK_SECONDARY.link
-            }
-          }}
-        />
-      </p>
-      <p class="disclaimer">
-        {$_('p4.disclaimer')}
-      </p>
     </div>
   </Section>
 
@@ -183,7 +140,7 @@
   {#if isSupported}
     <SelectProject bind:projectData />
   {:else}
-    <Section accent="#4C97FF">
+    <Section>
       <h2>{$_('p4.browserNotSupported')}</h2>
       <p>{$_('p4.browserNotSupportedDescription')}</p>
     </Section>
