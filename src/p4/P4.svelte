@@ -128,7 +128,7 @@
 <main aria-hidden={modalVisible} class:is-not-safari={!isSafari}>
   <Section>
     <div class="center">
-      <img src="/librekitten.ico" alt="librekitty" />
+      <img src="./librekitten.ico" alt="librekitty" />
       <h1>{APP_NAME}</h1>
     </div>
   </Section>
